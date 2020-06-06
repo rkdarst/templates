@@ -7,11 +7,16 @@ import setuputils
 with open("README.rst", "r") as fh:
     long_description = fh.read()
 
+version_ns = { }
+exec(open('xxx/_version.py').read(), version_ns)
+version = version_ns['__version__']
+del version_ns
+
 requirementstxt = join(dirname(__file__), "requirements.txt")
 requirements = [ line.strip() for line in open(requirementstxt, "r") if line.strip() ]
 
 setuputils.setup(name='xxx',
-      version='0.1.0',
+      version=version,
       description='xxx',
       long_description=long_description,
       long_description_content_type="text/x-rst",  # ReST is the default
