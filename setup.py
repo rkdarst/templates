@@ -1,8 +1,8 @@
 # https://packaging.python.org/guides/distributing-packages-using-setuptools/
 # 'wheel' may be a build-dependency, it's also dep of twine
 
-from os.path import join
-import setuputils
+from os.path import join, dirname
+import setuptools
 
 with open("README.rst", "r") as fh:
     long_description = fh.read()
@@ -15,7 +15,7 @@ del version_ns
 requirementstxt = join(dirname(__file__), "requirements.txt")
 requirements = [ line.strip() for line in open(requirementstxt, "r") if line.strip() ]
 
-setuputils.setup(name='xxx',
+setuptools.setup(name='xxx',
       version=version,
       description='xxx',
       long_description=long_description,
