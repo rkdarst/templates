@@ -24,6 +24,9 @@ setuptools.setup(name='xxx',
       author='xxx',
       #author_email='',
       packages=['xxx'],           # packages
+      #package_data={
+      #    "xxx": ['_static/*'],
+      #    },
       #py_modules=["nbscript"],   # single modules
       keywords='xxx xxx',
       python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*,",
