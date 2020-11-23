@@ -20,6 +20,7 @@ setuptools.setup(name='xxx',
       description='xxx',
       long_description=long_description,
       long_description_content_type="text/x-rst",  # ReST is the default
+      # long_description_content_type='text/markdown',
       url="https://github.com/xxx/xxx",
       author='xxx',
       #author_email='',
