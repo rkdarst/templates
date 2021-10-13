@@ -22,6 +22,9 @@ setuptools.setup(name='xxx',
       long_description_content_type="text/x-rst",  # ReST is the default
       # long_description_content_type='text/markdown',
       url="https://github.com/xxx/xxx",
+      #project_urls={
+      #    "Documentation": "xxx",
+      #    },
       author='xxx',
       #author_email='',
       packages=['xxx'],           # packages
