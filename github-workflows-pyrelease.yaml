@@ -1,0 +1,51 @@
+# PyPI publish when released
+# https://github.com/actions/starter-workflows/blob/master/ci/python-publish.yml
+
+# STILL UNTESTED
+
+name: pypi-publish
+on:
+  release:
+    types: [published]
+  # For tag-based (instead of Github-specific release-based):
+  #on: [push]
+
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    # For tag-based (instead of Github-specific release-based):
+    #if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+
+    steps:
+      - uses: actions/checkout@v2
+      # https://github.com/actions/setup-python
+      - name: Verify that this is a tag push
+        if: "! startsWith(github.ref, 'refs/tags')"
+        env:
+          github_ref: ${{github.ref}}
+        run: |
+          echo "::error::This action only makes sense when run on a tag (github.ref = ${{github.ref}} which does not start with refs/tags/)"
+          exit 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt -r requirements-dev.txt
+          pip install .
+          pip install setuptools wheel twine
+      - uses: rkdarst/action-verify-python-version@main
+      - name: Build
+        run: |
+          python setup.py sdist bdist_wheel
+      - name: Publish a Python distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN_RKDARST }}
