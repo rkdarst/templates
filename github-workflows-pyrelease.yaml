@@ -8,7 +8,10 @@ on:
   release:
     types: [published]
   # For tag-based (instead of Github-specific release-based):
-  #on: [push]
+  #on:
+  #  push:
+  #    tags:
+  #      - '*'
 
 
 permissions:
