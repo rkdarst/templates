@@ -28,7 +28,9 @@ test = [
     script-name = "module_name:main"
 
 [project.urls]
-Home = "https://example.com/"
+Repository = "https://example.com/"
+Documentation = "https://example.com/"
+
 
 # https://flit.pypa.io/en/latest/upload.html
 # flit build
