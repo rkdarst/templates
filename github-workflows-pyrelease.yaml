@@ -28,10 +28,9 @@ on:
   #release:
   #  types: [published]
   # For tag-based (instead of Github-specific release-based):
-  on:
-    push:
-      tags:
-        - '*'
+  push:
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -40,7 +39,6 @@ jobs:
     permissions:
       contents: read
 
-    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
 
@@ -64,7 +62,6 @@ jobs:
     - uses: rkdarst/action-verify-python-version@main
 
     - uses: actions/upload-artifact@master
-      if: ${{ github.event_name == 'push' }}
       with:
         name: dist-directory
         path: dist/
@@ -84,7 +81,6 @@ jobs:
         path: dist/
 
     - name: Publish on PyPI
-      if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@release/v1
       #with:
         #user: __token__
