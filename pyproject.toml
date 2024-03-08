@@ -11,7 +11,11 @@ authors = [{name = "NAME"}]  # FIXME
 readme = "README.md"
 license = {file = "LICENSE"}
 # https://pypi.org/classifiers/
-classifiers = ["License :: OSI Approved :: MIT License"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    ]
+#keywords = ["sphinx-extension"]
+requires-python = ">=3.3"
 dynamic = ["version", "description"]
 dependencies = [
     # FIXME
@@ -34,5 +38,8 @@ Documentation = "https://example.com/"
 
 # https://flit.pypa.io/en/latest/upload.html
 # flit build
+# You need to configure a .pypirc file for test upload, or use environment variables:
+# https://flit.pypa.io/en/latest/upload.html#using-pypirc
 # flit publish --repository testpypi
+# or:   FLIT_INDEX_URL=https://test.pypi.org/legacy/ FLIT_USERNAME=xxx and FLIT_PASSWORD=xxx flit publish
 # flit publish
