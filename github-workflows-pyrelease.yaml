@@ -51,11 +51,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install twine wheel
+        pip install flit twine wheel
 
     - name: Build
       run: |
-        python setup.py sdist bdist_wheel
+        flit build
 
     # Verify that the git tag has the same version as the python
     # project version.
