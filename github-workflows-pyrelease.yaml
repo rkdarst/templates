@@ -4,17 +4,18 @@ name: PyPI release
 # - builds the release files
 # - checks the tag version matches the source version
 # - releases on PyPI using the action
-#
-# The first time, you have to upload the release yourself to get the
-# API key, to add to gh-secrets.
-#
-# I upload it with:
-#   python setup.py sdist bdist_wheel
-#   twine upload dist/*
-#
-# To configure the secrets, see steps here:
-#   https://github.com/pypa/gh-action-pypi-publish
-#   secret name= pypi_password
+
+# This uses an action I made that tries to automatically verify the
+# release version matches the tag version.  If you don't use tags,
+# then remove that part.  The module name can be configured with
+# MOD_NAME below.
+
+# The upload uses a "trusted publisher".  Configure PyPI so that it
+# knows to accept incoming request from GitHub (no extra auth
+# configuration here is needed)
+# https://docs.pypi.org/trusted-publishers/using-a-publisher/
+
+
 
 
 # If MOD_NAME not defined, infer it from the current directory.  If
@@ -82,7 +83,7 @@ jobs:
 
     - name: Publish on PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
-      #with:
+      #with:     (this part is old and no longer needed)
         #user: __token__
         #password: ${{ secrets.pypi_password }}
         #repository_url: https://test.pypi.org/legacy/

@@ -12,6 +12,15 @@ more than a few times, and links to instructions for the rest.  Most
 files are used by copying and removing the unneeded parts.
 
 
+Python project
+--------------
+
+My python project uses these files:
+* pyproject.toml (flit)
+* github-workflows-pytest.yaml (pytest)
+* github-workflows-pyrelease.yaml (Build with Flit and upload to PyPI)
+
+
 Links
 -----
 
